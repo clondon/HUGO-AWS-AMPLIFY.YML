@@ -1,0 +1,18 @@
+version: 1
+env:
+  variables:
+    VERSION_AMPLIFY: 7.6.26
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yum install golang -y
+        - go version
+        - hugo version
+    build:
+      commands:
+        - hugo 
+  artifacts:
+    baseDirectory: public
+    files:
+      - '**/*'
