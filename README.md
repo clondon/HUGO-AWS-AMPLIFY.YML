@@ -1,5 +1,5 @@
 # HUGO-AWS-AMPLIFY.YML
-Sample amplify.yml config file - For Hugo Go fans like myself
+Sample **amplify.yml** config file - For Hugo Go fans like myself
 
 
 Add this to the root of your Hugo project then do 
