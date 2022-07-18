@@ -1,0 +1,15 @@
+version: 1.1.1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yum install golang -y
+        - go version
+        - hugo version
+    build:
+      commands:
+        - hugo 
+  artifacts:
+    baseDirectory: public
+    files:
+      - '**/*'
