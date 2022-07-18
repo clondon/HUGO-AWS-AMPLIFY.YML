@@ -1,24 +1,17 @@
-version: 1
+version: 0.1
 frontend:
   phases:
-    preBuild:
-      commands:
-        - "# Install required dependencies"
-        - "# jq is to create a proper parameters.json file"
-        - amazon-linux-extras enable golang1.11
-        - yum clean metadata
-        - yum -y install golang jq
-        - rm -rf node_modules/
-        - npm i
-        - npm ci
-    # IMPORTANT - Please verify your build commands
     build:
-      commands: [hugo]
+      commands:
+        - yum install golang -y
+        - wget https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Linux-64bit.tar.gz
+        - tar -xf hugo_0.55.4_Linux-64bit.tar.gz hugo
+        - mv hugo /usr/bin/hugo
+        - rm -rf hugo_0.55.4_Linux-64bit.tar.gz
+        - hugo
   artifacts:
-    # IMPORTANT - Please verify your build output directory
     baseDirectory: public
     files:
       - '**/*'
   cache:
-    paths:
-      - node_modules/**/*
+    paths: []
