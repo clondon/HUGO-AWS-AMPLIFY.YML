@@ -1,1 +1,18 @@
-
+version: 0.1
+frontend:
+  phases:
+    build:
+      commands:
+        - yum install golang -y
+        - wget https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_Linux-64bit.tar.gz
+        - tar -xf hugo_extended_0.111.3_Linux-64bit.tar.gz
+        - mv hugo /usr/bin/hugo
+        - rm -rf hugo_extended_0.111.3_Linux-64bit.tar.gz
+        - hugo mod get -u ./... 
+        - hugo
+  artifacts:
+    baseDirectory: public
+    files:
+      - '**/*'
+  cache:
+    paths:
